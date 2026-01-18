@@ -15,7 +15,6 @@ const PaypalButton = ({amount, onSuccess, onError}) => {
         }}
         onApprove={(data, actions) => {
           return actions.order.capture().then(details => {
-            console.log('Payment Successful', details);
             onSuccess(details)
           })
         }}

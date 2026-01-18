@@ -30,7 +30,6 @@ checkoutRouter.post('/', protect, async (req,res) => {
           paymentStatus:"Pending",
           isPaid:false,
         });
-        console.log(`Checkout created for the user : ${req.user._id}`);
         res.status(201).json(newCheckout);
     } catch (error) {
         console.error('Error Creating checkout session:',error);

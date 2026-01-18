@@ -12,7 +12,7 @@ export const protect = async (req,res,next) => {
             req.user = await User.findById(decoded.user.id).select("-password") // exclude password 
             next(); // allow to access respective route
        } catch (error) {
-        console.log(error);
+        console.error(error);
          return res.status(401).json({message:'Token Not Authorized'})
        }
   }

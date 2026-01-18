@@ -58,7 +58,6 @@ const handleFilterChange = (e) => {
    }
 
    setFilters(newFilters);
-   console.log(newFilters);
    updateURLParms(newFilters);
 }
 
