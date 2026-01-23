@@ -35,11 +35,12 @@ const TopBar = () => {
                 <span>WorldWide Shipping - Fastest and Reliable</span>
             </div>
              
-             <div className='text-sm hidden md:block'>
+             <div className='hidden md:block text-sm'>
                  <a href="tel:+808030XXXX" className='hover:text-gray-300'>808030XXXX</a>
              </div>
 
         </div>
+
     </div>
   )
 }

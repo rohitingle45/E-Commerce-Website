@@ -58,6 +58,7 @@ const CartDrawer = ({ drawerOpen, toggleCartDrawer }) => {
           </>
         )}
       </div>
+      
     </div>
   );
 };

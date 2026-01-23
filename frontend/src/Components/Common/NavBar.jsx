@@ -11,10 +11,12 @@ import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
 
   const { cart } = useSelector((state) => state.cart);
+
   const cartItemCount =
     cart?.products?.reduce((total, product) => total + product.quantity, 0) ||
     0;
@@ -34,7 +36,7 @@ const NavBar = () => {
         <div className="container mx-auto flex items-center justify-between py-4 px-6 ">
           {/* Left-Logo */}
           <div>
-            <Link to="/" className="text-2xl font-medium">
+            <Link to="/" className="text-2xl font-bold">
               MyApp
             </Link>
           </div>
@@ -72,6 +74,7 @@ const NavBar = () => {
 
           {/* Right-Content */}
           <div className="flex items-center space-x-4">
+        
             {user && user.role === "admin" && (
               <Link
                 to="/admin"
@@ -80,6 +83,7 @@ const NavBar = () => {
                 Admin
               </Link>
             )}
+            
             <Link to="/profile" className="hover:text-black">
               <HiOutlineUser className="h-6 w-6 text-gray-700" />
             </Link>
@@ -94,7 +98,7 @@ const NavBar = () => {
                   {cartItemCount}
                 </span>
               )}
-            </button>
+           </button>
 
             <div className="overflow:hidden">
               <SearchBar />
