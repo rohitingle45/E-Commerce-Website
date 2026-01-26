@@ -15,16 +15,18 @@ const Login = () => {
     const location = useLocation();
     const {user,guestId,loading} = useSelector((state)=>state.auth);
     const {cart} = useSelector((state)=>state.cart);
-
+    
     // Get redirect parameter and check if it's checkout or something else
       const redirect = new URLSearchParams(location.search).get('redirect') || '/';
       const isCheckoutRedirect = redirect.includes('checkout');
   
+      // const userId = user._id;
+
       useEffect(()=>{
           if(user) {
              if(cart?.products.length > 0 && guestId) {
                dispatch(mergeCart({guestId,user})).then(()=>{
-                navigate(isCheckoutRedirect ? '/checkout':'/');
+               navigate(isCheckoutRedirect ? '/checkout':'/');
                });
              } else {
               navigate(isCheckoutRedirect ? '/checkout' : '/');
@@ -68,7 +70,7 @@ const Login = () => {
                 placeholder='Enter your Password'
                 />
             </div>
-            <button className='bg-black text-white p-2 rounded-lg font-semibold w-full hover:bg-gray-800'>{loading ? 'Loading...':'Sign In'}</button>
+            <button className='bg-black text-white p-2 rounded-lg font-semibold w-full hover:bg-gray-800'>{loading ? 'Please Wait...':'Sign In'}</button>
             <p className='mt-6 text-center text-sm'>
                 Don't have an account? {""}
               <Link to={`/register?redirect=${encodeURIComponent(redirect)}`} className='text-blue-500'>

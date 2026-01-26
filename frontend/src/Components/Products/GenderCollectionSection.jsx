@@ -25,8 +25,9 @@ const GenderCollectionSection = () => {
             </Link>
           </div>
         </div>
+
          {/* Men's Collection */}
-             <div className="relative flex-1">
+        <div className="relative flex-1">
           <img
             src={menCollectionImg}
             alt="men-collection"

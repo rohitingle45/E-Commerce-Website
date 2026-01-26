@@ -98,7 +98,7 @@ const Footer = () => {
                 <p className='text-gray-500'>Call us</p>
                 <p>
                     <FiPhoneCall className='h-4 w-4 mt-1 inline-block mr-2'/>
-                    8080302196
+                    808030XXXX
                 </p>
             </div>
 
