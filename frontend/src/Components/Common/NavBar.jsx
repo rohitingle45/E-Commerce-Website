@@ -37,7 +37,7 @@ const NavBar = () => {
           {/* Left-Logo */}
           <div>
             <Link to="/" className="text-2xl font-bold">
-              MyApp
+              E-App
             </Link>
           </div>
 
