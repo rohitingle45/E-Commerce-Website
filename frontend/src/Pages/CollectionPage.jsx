@@ -105,7 +105,7 @@ const CollectionPage = () => {
          </button>
          {/* Filter Sidebar */}
          <div ref={sideBarRef} className={`${isSideBarOpen ? 'translate-x-0': '-translate-x-full'} fixed inset-y-0 z-50 left-0 w-64 bg-white overflow-y-auto transition-transform duration-300 lg:static lg:translate-x-0`}>
-            <FilterSidebar /> 
+            <FilterSidebar />   
          </div>
          <div className='flex-grow p-4'>
              <h2 className='text-2xl uppercase mb-4'>All Collections</h2>

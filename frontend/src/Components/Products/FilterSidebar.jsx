@@ -23,7 +23,7 @@ const FilterSidebar = () => {
     const sizes = ['XS','S','M','L','XL','XXL'];
     const materials = ['Cotton','Wool','Denim','Polyester','Silk','Linen','Viscose','Fleece'];
     const brands = ['Urban Threads','Modern Fit','Street Style','Beach Breeze','Fashionista','ChicStyle'];
-    const genders = ['Male','Female','Others'];
+    const genders = ['Men','Women','Others'];
 
     useEffect(()=>{
         const params = Object.fromEntries([...searchParams]);
@@ -79,12 +79,12 @@ const handlePriceRange = (e) => {
   let newPrice = e.target.value;
   setPriceRange([0,newPrice]);
   const newFilters = {...filters, minPrice:0,maxPrice:newPrice};
-  setFilters(filters);
+  setFilters(newFilters);
   updateURLParms(newFilters)
 }
   return (
     <div className='p-4'>
-       <h3 className='text-xl font-medium text-gray-800 mb-4'>Filter</h3>
+       <h3 className='text-xl font-medium text-gray-800 mb-4'>Filters</h3>
        {/* Category filter */}
        <div className='mb-6'>
          <label className='block text-gray-600 font-medium mb-2' >Category</label>

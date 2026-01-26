@@ -38,7 +38,6 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(registerUser({name,email,password}));
-        
     } 
 
   return (
@@ -83,7 +82,7 @@ const Register = () => {
                 placeholder='Enter your Password'
                 />
             </div>
-            <button className='bg-black text-white p-2 rounded-lg font-semibold w-full hover:bg-gray-800'>{loading ? 'Loading...':'Sign Up'}</button>
+            <button className='bg-black text-white p-2 rounded-lg font-semibold w-full hover:bg-gray-800'>{loading ? 'Please Wait...':'Sign Up'}</button>
             <p className='mt-6 text-center text-sm'>
                 Already have an account? {""}
               <Link to={`/login?redirect=${encodeURIComponent(redirect)}`} className='text-blue-500'>

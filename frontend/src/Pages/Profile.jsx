@@ -34,10 +34,10 @@ const Profile = () => {
                  <button onClick={handleLogout} className='w-full text-white bg-red-500 py-2 px-4 rounded hover:bg-red-600'>Logout</button>
              </div>
              {/* Right Section */}
-             <div className='w-full md:w-2/3 lg:h-3/4'>
+             <div className='w-full md:w-2/3 lg:h-3/4 overflow-x-auto'>
                   <MyOrdersPage/>
              </div>
-       </div>
+         </div>
        </div>
     </div>
   )
