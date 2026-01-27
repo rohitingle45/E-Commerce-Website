@@ -8,7 +8,8 @@ const OrderDetailsPage = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const {orderDetails , loading , error} = useSelector((state)=>state.orders);
-
+    
+    
     useEffect(()=>{
       dispatch(fetchOrderDetails(id))
     },[dispatch,id]);
@@ -106,10 +107,10 @@ const OrderDetailsPage = () => {
                        <tbody>
                         {
                             orderDetails.orderItems.map((item)=>(
-                                <tr key={item.productId} className='border-b'>
-                                   <td className='py-2 px-4 flex  items-center'>
-                                        <img src={item.Image} alt={item.name} className='h-12 w-12 object-cover rounded-lg mr-4'/>
-                                        <Link to={`product/${item.productId}`} className='text-blue-500 hover:underline'>{item.name}</Link>
+                                <tr key={item.productId} className='text-center border-b'>
+                                   <td className='py-2 px-4 flex items-center'>
+                                        <img src={item.image} alt={item.name} className='h-12 w-12 object-cover rounded-lg mr-4'/>
+                                        <Link to={`/product/${item.productId}`} className='text-blue-500 text-center'>{item.name}</Link>
                                    </td>
                                    <td className='py-2 px-4'>${item.price}</td>
                                    <td className='py-2 px-4'>{item.quantity}</td>

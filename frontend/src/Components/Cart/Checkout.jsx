@@ -92,7 +92,7 @@ const Checkout = () => {
     }
 
     if(loading) return <p>Loading cart ...</p>
-    if(error) return <p>Error:{error}</p>
+    if(error) return <p>{alert(`Error:${error} , Please Refresh the Page`)}</p>
     if(!cart || !cart.products || cart.products.length === 0) {
        return <p>Your cart is empty.</p>
     }
@@ -192,7 +192,6 @@ const Checkout = () => {
                  }
                 </div>
             </form>
-
          </div>
          {/* Right Section */}
          <div className='bg-gray-50 p-6 rounded-lg'>
@@ -203,7 +202,7 @@ const Checkout = () => {
                     <div key={index} className='flex items-start justify-between py-2 border-b'>
                       <div className='flex items-start'>
                           <img src={product.image} alt={product.name} className='w-20 h-24 object-cover mr-4' />
-                            <div >
+                      <div >
                           <h3 className='text-md'>{product.name}</h3>
                           <p className='text-gray-500'>Size:{product.size}</p>
                           <p className='text-gray-500'>Color:{product.color}</p>
