@@ -11,11 +11,13 @@ const Register = () => {
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const [localError, setLocalError] = useState(null);
+
     const dispatch = useDispatch();
    
         const navigate = useNavigate();
         const location = useLocation();
-        const {user,guestId,loading} = useSelector((state)=>state.auth);
+        const {user,guestId,loading,error} = useSelector((state)=>state.auth);
         const {cart} = useSelector((state)=>state.cart);
     
         // Get redirect parameter and check if it's checkout or something else
@@ -33,6 +35,20 @@ const Register = () => {
                  }
               }
           },[user,guestId,cart,navigate,isCheckoutRedirect,dispatch]);
+
+
+          // Error Message Showing on the UI
+            useEffect(() => {
+              if (error) {
+                setLocalError(error);
+          
+                const timer = setTimeout(() => {
+                  setLocalError(null);
+                }, 4000);
+          
+                return () => clearTimeout(timer);
+              }
+            }, [error]);
     
 
     const handleSubmit = (e) => {
@@ -83,6 +99,7 @@ const Register = () => {
                 />
             </div>
             <button className='bg-black text-white p-2 rounded-lg font-semibold w-full hover:bg-gray-800'>{loading ? 'Please Wait...':'Sign Up'}</button>
+             {localError && <p className='text-red-400 m-1 text-center'>{localError}</p>}
             <p className='mt-6 text-center text-sm'>
                 Already have an account? {""}
               <Link to={`/login?redirect=${encodeURIComponent(redirect)}`} className='text-blue-500'>
