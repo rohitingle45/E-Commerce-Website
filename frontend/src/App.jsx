@@ -32,7 +32,6 @@ const App = () => {
       <Routes>
                   {/* UserLayout */}
         <Route path="/" element={<UserLayout />}>
-
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -46,19 +45,16 @@ const App = () => {
           />
           <Route path="/order/:id" element={<OrderDetailsPage />} />
           <Route path="/my-orders" element={<MyOrdersPage />} />
-
         </Route>
                     {/* AdminLayout */}
         <Route path="/admin" element={<ProtectedRoutes role='admin'>
           <AdminLayout />
         </ProtectedRoutes>}>
-
           <Route index element={<AdminHomePage />} />
           <Route path="users" element={<UserManagement />} />
           <Route path="products" element={<ProductManagement />} />
           <Route path="products/:id/edit" element={<EditProductPage />} />
-          <Route path="orders" element={<OrderManagement/>}/>
-          
+          <Route path="orders" element={<OrderManagement/>}/> 
         </Route>
 
       </Routes>
