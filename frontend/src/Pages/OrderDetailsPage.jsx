@@ -11,41 +11,11 @@ const OrderDetailsPage = () => {
     
     
     useEffect(()=>{
-      dispatch(fetchOrderDetails(id))
+      dispatch(fetchOrderDetails(id));
     },[dispatch,id]);
 
     if(loading) return <p>Loading ...</p>
     if(error) return <p>Error:{error}</p>
-    // const [orderDetails,setOrderDetails] = useState();
-    // useEffect(()=>{
-    //     const mockOrderDetails = {
-    //         _id:id,
-    //         createdAt:new Date(),
-    //         isPaid:true,
-    //         isDelivered:false,
-    //         paymentMethod:"PayPal",
-    //         shippingMethod:"Standard",
-    //         shippingAddress:{address:"New Fashion Street",city:"New Delhi",country:"INDIA"},
-    //         orderItems:[
-    //             {
-    //                 productId:"1",
-    //                 name:"Jacket",
-    //                 price:120,
-    //                 quantity:1,
-    //                 Image:"https://picsum.photos/150?random=1",
-    //             },
-    //             {
-    //                 productId:"2",
-    //                 name:"T-Shirts",
-    //                 price:10,
-    //                 quantity:2,
-    //                 Image:"https://picsum.photos/150?random=2",
-    //             },
-    //         ]
-    //     }
-    //     setOrderDetails(mockOrderDetails);
-    // },[id])
-
 
   return (
     <div className='max-w-7xl mx-auto p-4 sm:p-6'>
@@ -81,6 +51,11 @@ const OrderDetailsPage = () => {
                </div>
                {/* Customer, Payment , Shipping Info */}
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8'>
+                    <div>
+                        <h3 className='text-lg font-medium mb-2'>Customer Info</h3>
+                        <p>Customer Name:{orderDetails.user.name}</p>
+                        <p>Customer Email:{orderDetails.user.email}</p>
+                    </div>
                     <div>
                         <h3 className='text-lg font-medium mb-2'>Payment Info</h3>
                         <p>Payment Method:{orderDetails.paymentMethod} || Online</p>
