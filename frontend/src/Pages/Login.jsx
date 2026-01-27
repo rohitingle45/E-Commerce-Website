@@ -42,7 +42,7 @@ const Login = () => {
 
       const timer = setTimeout(() => {
         setLocalError(null);
-      }, 4000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
