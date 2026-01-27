@@ -96,7 +96,7 @@ const OrderConfirmationPage = () => {
                   {/* Payment Info */}
                   <div>
                      <h4 className='text-lg font-semibold mb-2'>Payment</h4>
-                     <p className='text-gray-600'>PayPal</p>
+                     <p className='text-gray-600'>PayPal || Online</p>
                   </div>
                   {/* Delivery Info */}
                   <div>

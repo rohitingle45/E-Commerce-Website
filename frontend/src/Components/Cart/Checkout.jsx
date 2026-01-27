@@ -91,6 +91,12 @@ const Checkout = () => {
        }
     }
 
+    // Handle upi payment 
+    const handleUpiPayment = async () => {
+       await handleFinalizeCheckout(checkoutId);
+       await handlePaymentSuccess('UpiPayment');
+    }
+
     if(loading) return <p>Loading cart ...</p>
     if(error) return <p>{alert(`Error:${error} , Please Refresh the Page`)}</p>
     if(!cart || !cart.products || cart.products.length === 0) {
@@ -186,7 +192,12 @@ const Checkout = () => {
         
                   >Continue to Pay</button>)
                  :(<div>
-                    <h3 className='text-lg mb-4'>Pay With paypal</h3>
+                    <h3 className='text-2xl text-center mb-4 font-bold'>Pay With UPI</h3>
+                    <button onClick={handleUpiPayment} className='w-full bg-blue-400 h-10 lg:h-15 rounded lg:text-2xl font-medium hover:bg-blue-500'>Pay ${cart.totalPrice}</button>
+                    
+                    <div className="text-center m-2 font-medium text-2xl">OR</div>
+
+                    <h3 className='text-2xl text-center mb-4 font-bold'>Pay With paypal</h3>
                     <PaypalButton amount={cart.totalPrice} onSuccess={handlePaymentSuccess}  onError={()=>alert('Payment Failed.')} />
                  </div>)
                  }

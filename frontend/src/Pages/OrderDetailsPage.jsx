@@ -83,7 +83,7 @@ const OrderDetailsPage = () => {
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8'>
                     <div>
                         <h3 className='text-lg font-medium mb-2'>Payment Info</h3>
-                        <p>Payment Method:{orderDetails.paymentMethod}</p>
+                        <p>Payment Method:{orderDetails.paymentMethod} || Online</p>
                         <p>Status:{orderDetails.isPaid ? 'Paid':'UnPaid'}</p>
                     </div>
                      <div>
