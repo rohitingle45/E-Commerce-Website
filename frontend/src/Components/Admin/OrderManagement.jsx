@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,16 +7,7 @@ import {
 } from "../../redux/slices/adminOrderSlice.js";
 
 const OrderManagement = () => {
-  // const orders = [
-  //     {
-  //         _id:12312321,
-  //         user:{
-  //             name:"Rohit Ingle",
-  //         },
-  //         totalPrice:110,
-  //         status:"Processing"
-  //     }
-  // ];
+  const [processingOrderId, setProcessingOrderId] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
@@ -30,8 +21,24 @@ const OrderManagement = () => {
     }
   }, [dispatch, user, navigate]);
 
-  const handleStatusChange = (orderId, status) => {
-     dispatch(updateOrderStatus({ id: orderId, status }));
+  // const handleStatusChange = (orderId, status) => {
+  //    dispatch(updateOrderStatus({ id: orderId, status }));
+  // };
+  const handleStatusChange = async (orderId, status) => {
+    try {
+      setProcessingOrderId(orderId);
+
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      await dispatch(updateOrderStatus({ id: orderId, status }));
+
+      alert('Confirm to change order status to Delivered.');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setProcessingOrderId(null);
+    }
   };
 
   if (loading) return <p>Loading ...</p>;
@@ -78,11 +85,27 @@ const OrderManagement = () => {
                     </select>
                   </td>
                   <td className="p-4">
-                    <button
+                    {/* <button
                       className="bg-green-500 text-white rounded py-1 md:py-2 md:px-4 hover:bg-green-600 "
                       onClick={() => handleStatusChange(order._id, "Delivered")}
                     >
                       Mark As Delivered
+                    </button> */}
+                    <button
+                      disabled={processingOrderId === order._id}
+                      className={`
+                rounded py-1 px-2 md:py-2 md:px-4 text-white
+                ${
+                  processingOrderId === order._id
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-500 hover:bg-green-600"
+                }
+              `}
+                      onClick={() => handleStatusChange(order._id, "Delivered")}
+                    >
+                      {processingOrderId === order._id
+                        ? "Processing..."
+                        : "Mark As Delivered"}
                     </button>
                   </td>
                 </tr>
