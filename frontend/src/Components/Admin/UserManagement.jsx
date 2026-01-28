@@ -129,7 +129,7 @@ const UserManagement = () => {
         </form>
       </div>
       {/* User List Management */}
-      <div className="overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="overflow-x-auto shadow-md sm:rounded-lg max-h-[400px] overflow-y-auto">
         <table className="min-w-full text-left text-gray-500">
           <thead className="bg-gray-100 text-sm uppercase text-gray-700">
             <tr>

@@ -4,14 +4,6 @@ import {useDispatch,useSelector} from 'react-redux';
 import {deleteProduct, fetchAdminProducts} from '../../redux/slices/adminProductSlice.js';
 
 const ProductManagement = () => {
-//     const products = [
-//     {
-//         _id:123123,
-//         name:"Shirt",
-//         price:110,
-//         sku:"123123123",
-//     },
-// ];
 const dispatch = useDispatch()
 const {products,loading,error} = useSelector((state)=>state.adminProducts);
 

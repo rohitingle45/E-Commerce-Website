@@ -77,18 +77,9 @@ const OrderManagement = () => {
                       <option value="Cancelled">Cancelled</option>
                     </select>
                   </td>
-
-                  {/* <select value={order.status} onChange={(e)=>{handleStatusChange(order._id,e.target.value)}}
-                            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mt-3'
-                                >
-                                    <option value="Processing">Processing</option>
-                                    <option value="Shipped">Shipped</option>
-                                    <option value="Delivered">Delivered</option>
-                                    <option value="Cancelled">Cancelled</option>
-                                </select> */}
                   <td className="p-4">
                     <button
-                      className="bg-green-500 text-white rounded py-2 px-4 hover:bg-green-600 "
+                      className="bg-green-500 text-white rounded py-1 md:py-2 md:px-4 hover:bg-green-600 "
                       onClick={() => handleStatusChange(order._id, "Delivered")}
                     >
                       Mark As Delivered
