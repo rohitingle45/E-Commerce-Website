@@ -32,7 +32,7 @@ const OrderManagement = () => {
 
       await dispatch(updateOrderStatus({ id: orderId, status }));
 
-      alert('Confirm to change order status to Delivered.');
+      alert(`Confirm to change order status to ${status}.`);
       window.location.reload();
     } catch (error) {
       console.error(error);
