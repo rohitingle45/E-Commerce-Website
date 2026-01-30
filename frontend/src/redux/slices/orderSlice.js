@@ -56,6 +56,7 @@ const orderSlice = createSlice({
         .addCase(fetchUserOrders.fulfilled , (state,action)=>{
             state.loading = false;
             state.orders = action.payload;
+            state.totalOrders = action.payload.length;
         })
         .addCase(fetchUserOrders.rejected , (state,action)=>{
             state.loading = false;

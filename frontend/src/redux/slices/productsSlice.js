@@ -47,7 +47,7 @@ export const fetchProductDetails = createAsyncThunk('products/fetchProductDetail
 );
 
 
-// Async Thunk to fetch similar products
+// Async Thunk to update product
 export const updateProduct = createAsyncThunk('products/updateProduct',async ({id,productData})=>{
     const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/products/${id}`,productData,{
         headers: {

@@ -19,7 +19,6 @@ const initialState = {
 // Async Thunk for User Login
 export const loginUser = createAsyncThunk('auth/loginUser', async (userData,{rejectWithValue})=>{
   try {
-    // ${import.meta.env.VITE_BACKEND_URL}
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`,userData);
     localStorage.setItem('userInfo',JSON.stringify(response.data.user));
     localStorage.setItem('userToken',response.data.token);
@@ -33,7 +32,6 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (userData,{rej
 // Async Thunk for User Registration
 export const registerUser = createAsyncThunk('auth/registerUser', async (userData,{rejectWithValue})=>{
   try {
-    // ${import.meta.env.VITE_BACKEND_URL}
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/register`,userData);
     localStorage.setItem('userInfo',JSON.stringify(response.data.user));
     localStorage.setItem('userToken',response.data.token);
@@ -49,7 +47,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-        state.user = null,
+        state.user = null;
         state.guestId = `guest_${new Date().getTime()}`; // reset guest if on logout
         localStorage.removeItem('userInfo');
         localStorage.removeItem('userToken');
