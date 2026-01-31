@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import ProductGrid from "./ProductGrid";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductDetails,
@@ -16,7 +16,8 @@ const ProductsDetails = ({ productId }) => {
     (state) => state.products,
   );
   const { user, guestId } = useSelector((state) => state.auth);
-
+  const navigate = useNavigate();
+ 
   const [mainImage, setMainImage] = useState();
   const [selectedColor, setSelectedColor] = useState();
   const [selectedSize, setSelectedSize] = useState();
@@ -43,7 +44,12 @@ const ProductsDetails = ({ productId }) => {
     if (action === "plus") setQuantity((prev) => prev + 1);
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = () => { 
+    if (!user) {
+    toast.error("Please login to add products to cart!", { duration: 1000 });
+    navigate('/login');
+    return; 
+    }
     if (!selectedColor || !selectedSize) {
       toast.error("Please selected color and size field!", {
         duration: 1000,
